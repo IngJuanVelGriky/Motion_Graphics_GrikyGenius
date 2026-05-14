@@ -38,10 +38,7 @@ Given a video transcript with timestamps, generate a JSON array of "items" — k
 }}
 ```
 
-## Production Example
-Here is a real production example for reference:
 {example_json}
-
 ## Transcript (with timestamps in seconds)
 Video duration: {duration} seconds
 

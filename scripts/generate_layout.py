@@ -321,10 +321,16 @@ def generate_items(client: Groq, segments: list[dict], duration: float) -> list[
     with open(PROMPT_TEMPLATE_PATH, "r", encoding="utf-8") as f:
         template = f.read()
 
-    # Load example JSON (items only)
-    with open(EXAMPLE_JSON_PATH, "r", encoding="utf-8") as f:
-        example_data = json.load(f)
-    example_items = json.dumps(example_data["items"], ensure_ascii=False, indent=2)
+    # Load example JSON (optional — improves LLM output but not required)
+    example_section = ""
+    if EXAMPLE_JSON_PATH.exists():
+        try:
+            with open(EXAMPLE_JSON_PATH, "r", encoding="utf-8") as f:
+                example_data = json.load(f)
+            example_items = json.dumps(example_data["items"], ensure_ascii=False, indent=2)
+            example_section = f"\n## Production Example\nHere is a real production example for reference:\n{example_items}\n"
+        except Exception as e:
+            print(f"  [warn] Could not load example JSON: {e}")
 
     # Build prompt
     transcript_text = format_transcript_for_prompt(segments)
@@ -336,7 +342,7 @@ def generate_items(client: Groq, segments: list[dict], duration: float) -> list[
 
     prompt = template.format(
         icon_list=icon_list,
-        example_json=example_items,
+        example_json=example_section,
         duration=int(duration),
         transcript=transcript_text,
     )

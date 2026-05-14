@@ -1,0 +1,145 @@
+{
+  "videoSrc": "T1 Modelado relacional en Power BI B.mp4",
+  "canvas": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationInSeconds": 117
+  },
+  "layout": {
+    "left": { "x": 80, "y": 140, "width": 480, "height": 800 },
+    "center": { "x": 640, "y": 0, "width": 640, "height": 1080 },
+    "right": { "x": 1360, "y": 140, "width": 480, "height": 800 }
+  },
+  "items": [
+    {
+      "id": "h1",
+      "text": "Números incorrectos sin saberlo",
+      "icon": "FiAlertTriangle",
+      "start": 2,
+      "end": 6,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h2",
+      "text": "El esquema estrella",
+      "icon": "FiStar",
+      "start": 17,
+      "end": 21,
+      "column": "right",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h3",
+      "text": "Filtros en una sola dirección",
+      "icon": "FiArrowRight",
+      "start": 27,
+      "end": 31,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h4",
+      "text": "Modelo roto vs. modelo correcto",
+      "icon": "FiGitMerge",
+      "start": 36,
+      "end": 40,
+      "column": "right",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h5",
+      "text": "Mismo dato, resultado diferente",
+      "icon": "FiShuffle",
+      "start": 56,
+      "end": 60,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h6",
+      "text": "3 pasos para corregir el modelo",
+      "icon": "FiTool",
+      "start": 60,
+      "end": 85,
+      "column": "right",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h6a",
+      "text": "1. Relaciones → dirección única",
+      "start": 62,
+      "end": 66,
+      "column": "right",
+      "verticalAlign": "bottom",
+      "variant": "subheadline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h6b",
+      "text": "2. Elimina la relación triangular",
+      "start": 73,
+      "end": 77,
+      "column": "right",
+      "verticalAlign": "bottom",
+      "variant": "subheadline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h6c",
+      "text": "3. Verifica 1 en dimensión y * en hechos",
+      "start": 77,
+      "end": 81,
+      "column": "right",
+      "verticalAlign": "bottom",
+      "variant": "subheadline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h7",
+      "text": "3 señales de un modelo con problemas",
+      "icon": "FiAlertOctagon",
+      "start": 85,
+      "end": 89,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h8",
+      "text": "Modelo bien estructurado = resultados predecibles",
+      "icon": "FiCheckCircle",
+      "start": 105,
+      "end": 109,
+      "column": "right",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    }
+  ]
+}

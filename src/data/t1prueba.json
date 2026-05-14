@@ -1,0 +1,127 @@
+{
+  "videoSrc": "T1Prueba.mp4",
+  "canvas": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationInSeconds": 117
+  },
+  "layout": {
+    "left": {
+      "x": 80,
+      "y": 140,
+      "width": 480,
+      "height": 800
+    },
+    "center": {
+      "x": 640,
+      "y": 0,
+      "width": 640,
+      "height": 1080
+    },
+    "right": {
+      "x": 1360,
+      "y": 140,
+      "width": 480,
+      "height": 800
+    }
+  },
+  "items": [
+    {
+      "id": "h1",
+      "text": "Relaciones incorrectas = datos incorrectos",
+      "icon": "FiAlertTriangle",
+      "start": 3,
+      "end": 8,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h2",
+      "text": "Esquema estrella",
+      "icon": "FiStar",
+      "start": 17,
+      "end": 22,
+      "column": "right",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h3",
+      "text": "Filtros en una sola dirección",
+      "icon": "FiArrowRight",
+      "start": 28,
+      "end": 33,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h4",
+      "text": "Bidireccional = impredecible",
+      "icon": "FiShuffle",
+      "start": 40,
+      "end": 45,
+      "column": "right",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h5",
+      "text": "Mismo dato, resultado diferente",
+      "icon": "FiRefreshCw",
+      "start": 54,
+      "end": 59,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h6",
+      "text": "Paso a paso: corregir modelo",
+      "icon": "FiTool",
+      "start": 62,
+      "end": 67,
+      "column": "right",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h7",
+      "text": "3 señales de modelo con problemas",
+      "icon": "FiAlertCircle",
+      "start": 85,
+      "end": 90,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h8",
+      "text": "Modelo correcto = resultados predecibles",
+      "icon": "FiCheckCircle",
+      "start": 100,
+      "end": 105,
+      "column": "right",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    }
+  ]
+}

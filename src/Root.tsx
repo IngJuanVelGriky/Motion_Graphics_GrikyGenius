@@ -3,6 +3,7 @@ import { Composition } from "remotion";
 import { AvatarSideTitles } from "./AvatarSideTitles";
 import sampleData from "./data/sample-video-layout.json";
 import avatarIvVideo2Data from "./data/avatar-iv-video-2.json";
+import t1pruebaData from "./data/t1prueba.json";
 import type { VideoLayout } from "./lib/layout";
 
 const TypedComposition = Composition as React.FC<{
@@ -19,8 +20,19 @@ export const RemotionRoot: React.FC = () => {
   const sample = sampleData as VideoLayout;
   const avatarIvVideo2 = avatarIvVideo2Data as VideoLayout;
 
+  const t1prueba = t1pruebaData as VideoLayout;
+
   return (
     <>
+      <TypedComposition
+        id="T1prueba"
+        component={AvatarSideTitles}
+        width={t1prueba.canvas.width}
+        height={t1prueba.canvas.height}
+        fps={t1prueba.canvas.fps}
+        durationInFrames={t1prueba.canvas.durationInSeconds * t1prueba.canvas.fps}
+        defaultProps={t1prueba}
+      />
       <TypedComposition
         id="AvatarSideTitlesDemo"
         component={AvatarSideTitles}
