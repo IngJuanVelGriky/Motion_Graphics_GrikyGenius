@@ -1,0 +1,160 @@
+{
+  "videoSrc": "Avatar_IV_Video-2.mp4",
+  "canvas": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationInSeconds": 147
+  },
+  "layout": {
+    "left": {
+      "x": 80,
+      "y": 140,
+      "width": 480,
+      "height": 800
+    },
+    "center": {
+      "x": 640,
+      "y": 0,
+      "width": 640,
+      "height": 1080
+    },
+    "right": {
+      "x": 1360,
+      "y": 140,
+      "width": 480,
+      "height": 800
+    }
+  },
+  "items": [
+    {
+      "id": "h1",
+      "text": "Energía no es electricidad",
+      "icon": "FiGlobe",
+      "start": 2,
+      "end": 6,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h2",
+      "text": "80% no es electricidad",
+      "icon": "FiBarChart2",
+      "start": 17,
+      "end": 21,
+      "column": "right",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h3",
+      "text": "Red de vectores",
+      "icon": "FiLayers",
+      "start": 27,
+      "end": 31,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h4",
+      "text": "Presupuesto carbono",
+      "icon": "FiAlertOctagon",
+      "start": 52,
+      "end": 56,
+      "column": "right",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h5",
+      "text": "Grandes emisiones",
+      "icon": "FiPieChart",
+      "start": 79,
+      "end": 83,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h6",
+      "text": "Palancas Descarbonización",
+      "icon": "FiTool",
+      "fontSize": 52,
+      "start": 110,
+      "end": 127,
+      "column": "right",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h6a",
+      "text": "1. Eficiencia",
+      "start": 112,
+      "end": 116,
+      "column": "right",
+      "verticalAlign": "bottom",
+      "variant": "subheadline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h6b",
+      "text": "2. Electrificación",
+      "start": 118,
+      "end": 121,
+      "column": "right",
+      "verticalAlign": "bottom",
+      "variant": "subheadline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h6c",
+      "text": "3. Renovables",
+      "start": 122,
+      "end": 124,
+      "column": "right",
+      "verticalAlign": "bottom",
+      "variant": "subheadline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    }, {
+      "id": "h6c",
+      "text": "4. Vectores Limpios",
+      "start": 125,
+      "end": 127,
+      "column": "right",
+      "verticalAlign": "bottom",
+      "variant": "subheadline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    
+    {
+      "id": "h8",
+      "text": "Jerarquía correcta",
+      "icon": "FiArrowRight",
+      "start": 130,
+      "end": 134,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    }
+  ]
+}

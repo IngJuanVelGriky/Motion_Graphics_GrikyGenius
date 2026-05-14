@@ -1,0 +1,60 @@
+{
+  "videoSrc": "avatar.mp4",
+  "canvas": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationInSeconds": 5
+  },
+  "layout": {
+    "left": { "x": 80, "y": 140, "width": 480, "height": 800 },
+    "center": { "x": 640, "y": 0, "width": 640, "height": 1080 },
+    "right": { "x": 1360, "y": 140, "width": 480, "height": 800 }
+  },
+  "items": [
+    {
+      "id": "t1",
+      "text": "Automatiza títulos",
+      "start": 0.4,
+      "end": 2.2,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "t2",
+      "text": "Sin tocar After Effects",
+      "start": 2.4,
+      "end": 4.6,
+      "column": "right",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "t3",
+      "text": "Generado con JSON",
+      "start": 1.0,
+      "end": 2.0,
+      "column": "left",
+      "verticalAlign": "bottom",
+      "variant": "subheadline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "t4",
+      "text": "100% escalable",
+      "start": 3.0,
+      "end": 4.6,
+      "column": "right",
+      "verticalAlign": "bottom",
+      "variant": "subheadline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    }
+  ]
+}

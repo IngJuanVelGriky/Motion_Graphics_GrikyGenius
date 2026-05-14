@@ -1,0 +1,13 @@
+node_modules/
+out/
+scripts/.env
+transcripts/*.mp3
+transcripts/*.json
+!transcripts/.gitkeep
+.DS_Store
+public/*.mp4
+public/*.webm
+examples/*.mp4
+.claude/
+__pycache__/
+*.pyc

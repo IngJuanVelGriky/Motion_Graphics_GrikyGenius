@@ -1,0 +1,29 @@
+{
+  "name": "avatar-titles-remotion",
+  "version": "1.0.0",
+  "description": "JSON-driven motion graphics overlays for avatar videos — powered by Remotion + Groq AI",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "remotion studio",
+    "setup": "node scripts/setup.js",
+    "build": "remotion render",
+    "render": "remotion render",
+    "build:transparent": "remotion render --codec=vp8 --pixel-format=yuva420p",
+    "generate": "cd scripts && python generate_layout.py"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.456",
+    "@remotion/google-fonts": "^4.0.456",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-icons": "^5.6.0",
+    "remotion": "4.0.456"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "5.4.5"
+  }
+}
