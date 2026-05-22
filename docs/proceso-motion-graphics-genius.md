@@ -1,5 +1,13 @@
 # Proceso: Motion Graphics Automatizados para Videos con Avatar
 
+## Repositorio
+
+**GitHub**: https://github.com/IngJuanVelGriky/Motion_Graphics_GrikyGenius
+
+```bash
+git clone https://github.com/IngJuanVelGriky/Motion_Graphics_GrikyGenius.git
+```
+
 ## Resumen del proceso
 
 Este pipeline genera automáticamente overlays animados (títulos, imágenes y clips de video) sobre videos educativos con avatar. La IA analiza el transcript del video y decide qué momentos destacar visualmente.
