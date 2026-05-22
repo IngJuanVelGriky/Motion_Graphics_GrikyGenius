@@ -1,0 +1,114 @@
+{
+  "videoSrc": "T1U1PruebaImagenes.mp4",
+  "canvas": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationInSeconds": 140
+  },
+  "layout": {
+    "left": {
+      "x": 80,
+      "y": 140,
+      "width": 480,
+      "height": 800
+    },
+    "center": {
+      "x": 640,
+      "y": 0,
+      "width": 640,
+      "height": 1080
+    },
+    "right": {
+      "x": 1360,
+      "y": 140,
+      "width": 480,
+      "height": 800
+    }
+  },
+  "items": [
+    {
+      "id": "h1",
+      "text": "Energía vs electricidad",
+      "icon": "FiInfo",
+      "start": 2,
+      "end": 6,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h2",
+      "text": "Consumo final",
+      "icon": "FiBarChart",
+      "start": 12,
+      "end": 16,
+      "column": "right",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "img1",
+      "type": "image",
+      "src": "T1IM1.png",
+      "imagePrompt": "Horizontal bar chart showing energy consumption by sector — electricity 20%, transport 16%, manufacturing 13%, industry 10%. Large percentage numbers on each bar, single-word sector labels. Warm color gradient bars (amber to gold) on dark background (#1a1a2e), subtle glow on bar edges, premium corporate infographic style, sans-serif typography, cinematic quality. Dark warm background (#1a1a2e to #2d1b00 gradient), amber and golden accent colors, soft warm lighting with subtle glow effects. Premium corporate infographic style, cinematic quality, no white backgrounds, no clip-art. Sans-serif typography only (Roboto or similar), warm color palette: amber (#F59E0B), gold (#D4A574), warm white (#FFF8F0), soft teal (#5EEAD4) as accent",
+      "start": 30,
+      "end": 36,
+      "display": "fullscreen",
+      "animationIn": "fadeIn",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h4",
+      "text": "Presupuesto carbón",
+      "icon": "FiDollarSign",
+      "start": 40,
+      "end": 44,
+      "column": "right",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h5",
+      "text": "Descarbonización",
+      "icon": "FiZap",
+      "fontSize":50,
+      "start": 50,
+      "end": 54,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "img2",
+      "type": "image",
+      "src": "T1IM2.png",
+      "imagePrompt": "Infographic showing the four levers for decarbonization: efficiency, electrification, renewables, and clean vectors. Icons and simple labels, warm color scheme, dark background, premium corporate style. Dark warm background (#1a1a2e to #2d1b00 gradient), amber and golden accent colors, soft warm lighting with subtle glow effects. Premium corporate infographic style, cinematic quality, no white backgrounds, no clip-art. Sans-serif typography only (Roboto or similar), warm color palette: amber (#F59E0B), gold (#D4A574), warm white (#FFF8F0), soft teal (#5EEAD4) as accent",
+      "start": 70,
+      "end": 76,
+      "display": "fullscreen",
+      "animationIn": "fadeIn",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h6",
+      "text": "Hoja de ruta",
+      "icon": "FiMap",
+      "start": 80,
+      "end": 84,
+      "column": "right",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    }
+  ]
+}

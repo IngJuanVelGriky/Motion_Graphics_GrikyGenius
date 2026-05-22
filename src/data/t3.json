@@ -1,0 +1,201 @@
+{
+  "videoSrc": "accclimatica/curso1/U1/T3/T3.mp4",
+  "canvas": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationInSeconds": 188
+  },
+  "layout": {
+    "left": {
+      "x": 80,
+      "y": 140,
+      "width": 480,
+      "height": 800
+    },
+    "center": {
+      "x": 640,
+      "y": 0,
+      "width": 640,
+      "height": 1080
+    },
+    "right": {
+      "x": 1360,
+      "y": 140,
+      "width": 480,
+      "height": 800
+    }
+  },
+  "items": [
+    {
+      "id": "h1",
+      "text": "Transición energética",
+      "icon": "FiSun",
+      "start": 2,
+      "end": 6,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "type": "image",
+      "id": "img1",
+      "src": "/accclimatica/curso1/U1/T3/img1.png",
+      "imagePrompt": "Ilustración de un mapa de transición energética con 5 palancas: eficiencia, renovables, electrificación, vectores limpios y captura de carbono. Dark warm background (#1a1a2e), amber gradient bars, subtle glow, premium corporate infographic, roboto typography, cinematic quality.",
+      "start": 8,
+      "end": 15,
+      "display": "fullscreen",
+      "animationIn": "fadeIn",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h2",
+      "text": "5 palancas",
+      "icon": "FiArrowUp",
+      "start": 17,
+      "end": 21,
+      "column": "right",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "type": "clip",
+      "id": "clip1",
+      "src": "/accclimatica/curso1/U1/T3/clip1.mp4",
+      "clipPrompt": "Secuencia de un sistema de energía renovable, mostrando la generación de electricidad a través de paneles solares y turbinas eólicas, con una transición suave a un sistema de almacenamiento de energía.",
+      "start": 25,
+      "end": 30,
+      "display": "fullscreen",
+      "animationIn": "fadeIn",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h3",
+      "text": "Eficiencia",
+      "start": 36,
+      "end": 40,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "type": "image",
+      "id": "img2",
+      "src": "/accclimatica/curso1/U1/T3/img2.png",
+      "imagePrompt": "Gráfico de barras que muestra la reducción del costo de la energía solar fotovoltaica entre 2010 y 2024. Dark warm background (#1a1a2e), amber gradient bars, subtle glow, premium corporate infographic, roboto typography, cinematic quality.",
+      "start": 43,
+      "end": 50,
+      "display": "fullscreen",
+      "animationIn": "fadeIn",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h4",
+      "text": "Renovables",
+      "icon": "FiWind",
+      "start": 52,
+      "end": 56,
+      "column": "right",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "type": "clip",
+      "id": "clip2",
+      "src": "/accclimatica/curso1/U1/T3/clip2.mp4",
+      "clipPrompt": "Secuencia de un proceso de electrificación, mostrando la sustitución de combustibles fósiles por electricidad limpia en diferentes sectores.",
+      "start": 60,
+      "end": 69,
+      "display": "fullscreen",
+      "animationIn": "fadeIn",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h5",
+      "text": "Electrificación",
+      "start": 70,
+      "end": 74,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "type": "image",
+      "id": "img3",
+      "src": "NEEDS_IMAGE",
+      "imagePrompt": "Ilustración de un sistema de almacenamiento de energía, mostrando baterías y otros mecanismos de almacenamiento. Dark warm background (#1a1a2e), amber gradient bars, subtle glow, premium corporate infographic, roboto typography, cinematic quality.",
+      "start": 78,
+      "end": 85,
+      "display": "fullscreen",
+      "animationIn": "fadeIn",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h6",
+      "text": "Almacenamiento",
+      "icon": "FiBattery",
+      "start": 88,
+      "end": 92,
+      "column": "right",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "type": "clip",
+      "id": "clip3",
+      "src": "NEEDS_CLIP",
+      "clipPrompt": "Secuencia de un sistema de flexibilidad energética, mostrando la respuesta de demanda y el equilibrio entre oferta y demanda.",
+      "start": 96,
+      "end": 103,
+      "display": "fullscreen",
+      "animationIn": "fadeIn",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h7",
+      "text": "Flexibilidad",
+      "start": 106,
+      "end": 110,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "type": "image",
+      "id": "img4",
+      "src": "NEEDS_IMAGE",
+      "imagePrompt": "Ilustración de un mapa de transición energética, mostrando las 5 palancas y la importancia del almacenamiento y la flexibilidad. Dark warm background (#1a1a2e), amber gradient bars, subtle glow, premium corporate infographic, roboto typography, cinematic quality.",
+      "start": 114,
+      "end": 121,
+      "display": "fullscreen",
+      "animationIn": "fadeIn",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h8",
+      "text": "Mapa de transición",
+      "icon": "FiMap",
+      "start": 124,
+      "end": 128,
+      "column": "right",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    }
+  ]
+}

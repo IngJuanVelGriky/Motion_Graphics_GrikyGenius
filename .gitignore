@@ -5,8 +5,12 @@ transcripts/*.mp3
 transcripts/*.json
 !transcripts/.gitkeep
 .DS_Store
-public/*.mp4
-public/*.webm
+
+# Video/audio assets (heavy files, not source code)
+public/**/*.mp4
+public/**/*.webm
+public/**/*.mp3
+
 examples/*.mp4
 .claude/
 __pycache__/

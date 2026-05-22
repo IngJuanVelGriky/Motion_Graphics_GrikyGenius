@@ -1,0 +1,113 @@
+{
+  "videoSrc": "T2.mp4",
+  "canvas": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationInSeconds": 171
+  },
+  "layout": {
+    "left": {
+      "x": 80,
+      "y": 140,
+      "width": 480,
+      "height": 800
+    },
+    "center": {
+      "x": 640,
+      "y": 0,
+      "width": 640,
+      "height": 1080
+    },
+    "right": {
+      "x": 1360,
+      "y": 140,
+      "width": 480,
+      "height": 800
+    }
+  },
+  "items": [
+    {
+      "id": "h1",
+      "text": "Clima y finanzas",
+      "icon": "FiDroplet",
+      "start": 2,
+      "end": 6,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h2",
+      "text": "Acuerdo de París",
+      "icon": "FiGlobe",
+      "start": 16,
+      "end": 20,
+      "column": "right",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h3",
+      "text": "Regulación climática",
+      "icon": "FiLock",
+      "start": 32,
+      "end": 36,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "img1",
+      "type": "image",
+      "src": "T2IM1.png",
+      "imagePrompt": "Infographic showing the three main climate regulation frameworks: SBTI, CSRD, and IFRSS2. Dark warm background, amber and golden accent colors, soft warm lighting with subtle glow effects. Premium corporate infographic style, cinematic quality, no white backgrounds, no clip-art. Sans-serif typography only, warm color palette: amber, gold, warm white, soft teal as accent.",
+      "start": 50,
+      "end": 86,
+      "display": "fullscreen",
+      "animationIn": "fadeIn",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h5",
+      "text": "Impuestos al carbono",
+      "icon": "FiDollarSign",
+      "start": 116,
+      "end": 122,
+      "column": "left",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideRightFade",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "img2",
+      "type": "image",
+      "src": "T2IM2.png",
+      "imagePrompt": "Map showing the different carbon pricing mechanisms in Latin America. Dark warm background, amber and golden accent colors, soft warm lighting with subtle glow effects. Premium corporate infographic style, cinematic quality, no white backgrounds, no clip-art. Sans-serif typography only, warm color palette: amber, gold, warm white, soft teal as accent.",
+      "start": 135,
+      "end": 153,
+      "display": "fullscreen",
+      "animationIn": "fadeIn",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h6",
+      "text": "Hoja de ruta",
+      "icon": "FiFile",
+      "start": 158,
+      "end": 162,
+      "column": "right",
+      "verticalAlign": "center",
+      "variant": "headline",
+      "animationIn": "slideLeftFade",
+      "animationOut": "fadeOut"
+    }
+  ]
+}

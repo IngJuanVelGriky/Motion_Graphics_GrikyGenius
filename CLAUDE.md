@@ -1,54 +1,63 @@
 # Avatar Titles Remotion — Motion Graphics Generator
 
 ## What this project does
-Generates animated title overlays for educational videos with an avatar speaker.
-A JSON file defines when and where titles appear; Remotion renders the final MP4.
+Generates animated overlay motion graphics (titles, images, and clips) for educational videos with an avatar speaker. A JSON file defines when and where overlays appear; Remotion renders the final MP4.
+
+**Design philosophy**: The avatar is visible only ~30% of the video. The remaining ~70% is covered by fullscreen overlays — images and clips, split roughly 50/50. Titles only appear during avatar-visible moments.
 
 The pipeline: **Video → Audio → Transcript → AI Highlights → JSON → Remotion → MP4**
 
 ## Project structure
 ```
 avatar-titles-remotion/
-├── public/              ← Place your .mp4 videos here
+├── public/                    ← Videos and assets, organized by course
+│   └── {diplomado}/{curso}/{unidad}/
+│       ├── avatar.mp4         ← Main video
+│       ├── img1.png           ← Generated images
+│       └── clip1.mp4          ← Generated clips
 ├── src/
-│   ├── Root.tsx          ← Registers Remotion compositions
-│   ├── AvatarSideTitles.tsx ← Main composition component
+│   ├── Root.tsx               ← Registers Remotion compositions
+│   ├── AvatarSideTitles.tsx   ← Main composition component
 │   ├── components/
-│   │   └── TitleBlock.tsx    ← Animated title with icon
+│   │   ├── TitleBlock.tsx     ← Animated title with icon
+│   │   ├── ImageBlock.tsx     ← Image overlay (fullscreen/PiP/placeholder)
+│   │   └── ClipBlock.tsx      ← Clip video overlay (fullscreen/placeholder)
 │   ├── data/
-│   │   └── *.json            ← Layout JSONs (one per video)
+│   │   └── *.json             ← Layout JSONs (one per video)
 │   └── lib/
-│       ├── layout.ts         ← Types and helpers
-│       └── icons.ts          ← 287 Feather icons mapped by name
+│       ├── layout.ts          ← Types and helpers
+│       └── icons.ts           ← 287 Feather icons mapped by name
 ├── scripts/
-│   ├── generate_layout.py    ← AI pipeline (ffmpeg → Groq Whisper → Groq LLM → JSON)
-│   ├── prompt_template.txt   ← LLM prompt for highlight generation
-│   ├── .env                  ← Your GROQ_API_KEY (not in Git)
+│   ├── generate_layout.py     ← AI pipeline (ffmpeg → Groq Whisper → Groq LLM → JSON)
+│   ├── prompt_template.txt    ← LLM prompt for highlight generation
+│   ├── .env                   ← Your GROQ_API_KEY (not in Git)
 │   └── .env.example
-├── transcripts/         ← Cached audio/transcript files (not in Git)
-├── out/                 ← Rendered videos (not in Git)
-└── examples/            ← Example outputs (not in Git)
+├── transcripts/               ← Cached audio/transcript files (not in Git)
+├── out/                       ← Rendered videos (not in Git)
+└── examples/                  ← Example outputs (not in Git)
 ```
 
 ---
 
 ## Workflow: Generating motion graphics for a new video
 
-When the user asks to generate highlights / motion graphics for a video, follow these steps:
-
 ### Step 1 — Place the video
-The user should place their .mp4 file in `public/`. Example: `public/my-video.mp4`
+Place the .mp4 in `public/`, ideally in a subfolder structure:
+```
+public/accclimatica/curso1/u1/avatar.mp4
+```
+Legacy: `public/my-video.mp4` still works.
 
 ### Step 2 — Run the AI pipeline
 ```bash
 cd scripts
-python generate_layout.py --video ../public/my-video.mp4
+python generate_layout.py --video ../public/accclimatica/curso1/u1/avatar.mp4
 ```
 
 This will:
 1. Extract audio with ffmpeg
 2. Transcribe with Groq Whisper
-3. Generate editorial highlights with Groq LLM
+3. Generate editorial highlights (titles, images, clips) with Groq LLM
 4. Write a JSON to `src/data/<slug>.json`
 5. Auto-register the composition in `src/Root.tsx`
 
@@ -56,38 +65,25 @@ This will:
 ```bash
 npm start
 ```
-Opens http://localhost:3000. Select the new composition from the sidebar.
 
-### Step 4 — Edit the highlights (optional)
-The user can ask to modify the JSON. Edit the file in `src/data/`. Remotion hot-reloads.
+### Step 4 — Provide assets
+- Replace `"NEEDS_IMAGE"` with actual image paths (relative to `public/`)
+- Replace `"NEEDS_CLIP"` with actual clip paths (relative to `public/`)
+- Generate images from `imagePrompt` using DALL-E/Midjourney
+- Generate clips from `clipPrompt` using video generation tools
 
-Common edits:
-- Change text: edit `"text"` field
-- Move timing: adjust `"start"` / `"end"` (in seconds)
-- Change icon: update `"icon"` field (see icon catalog below)
-- Change position: set `"column"` to `"left"` or `"right"`
-- Change size: use `"variant": "headline"` (large) or `"subheadline"` (smaller)
-
-### Step 5 — Render the final video
+### Step 5 — Render
 ```bash
 npx remotion render <CompositionId> out/<filename>.mp4
-```
-Example: `npx remotion render MyVideo out/my-video.mp4`
-
-For transparent output (alpha channel, for compositing):
-```bash
-npx remotion render <CompositionId> out/video.webm --codec=vp8 --pixel-format=yuva420p
 ```
 
 ---
 
 ## JSON Schema Reference
 
-Each layout JSON has this structure:
-
 ```json
 {
-  "videoSrc": "my-video.mp4",
+  "videoSrc": "accclimatica/curso1/u1/avatar.mp4",
   "canvas": {
     "width": 1920,
     "height": 1080,
@@ -99,31 +95,123 @@ Each layout JSON has this structure:
     "center": { "x": 640,  "y": 0,   "width": 640, "height": 1080 },
     "right":  { "x": 1360, "y": 140, "width": 480, "height": 800 }
   },
-  "items": [
-    {
-      "id": "h1",
-      "text": "Short punchy title",
-      "icon": "FiDatabase",
-      "start": 5,
-      "end": 9,
-      "column": "left",
-      "verticalAlign": "center",
-      "variant": "headline",
-      "animationIn": "slideRightFade",
-      "animationOut": "fadeOut"
-    }
-  ]
+  "items": [ ... ]
 }
 ```
 
-### Item rules
+`videoSrc` supports subdirectory paths relative to `public/`.
+
+### Title Item schema
+```json
+{
+  "type": "title",
+  "id": "h1",
+  "text": "Short punchy title",
+  "icon": "FiDatabase",
+  "start": 5,
+  "end": 9,
+  "column": "left",
+  "verticalAlign": "center",
+  "variant": "headline",
+  "animationIn": "slideRightFade",
+  "animationOut": "fadeOut"
+}
+```
+
+### Title Item rules
+- `type`: `"title"` (optional, default)
 - `column`: `"left"` or `"right"` — titles alternate sides
-- `animationIn`: use `"slideRightFade"` for left column, `"slideLeftFade"` for right
+- `animationIn`: `"slideRightFade"` for left, `"slideLeftFade"` for right
 - `animationOut`: always `"fadeOut"`
 - `variant`: `"headline"` (64px bold) or `"subheadline"` (36px medium)
-- `verticalAlign`: `"top"`, `"center"`, or `"bottom"`
-- `fontSize`: optional override (number in pixels)
-- Items should be visible 4-5 seconds each with 2+ second gaps
+- `fontSize`: optional override (pixels)
+- Visible 4-5 seconds, 2+ second gaps
+- **Titles only appear during avatar-visible time (~30% of video)**
+
+### Image Item schema
+```json
+{
+  "type": "image",
+  "id": "img1",
+  "src": "NEEDS_IMAGE",
+  "caption": "Optional caption",
+  "imagePrompt": "2-3 sentence description for AI image generation",
+  "start": 25,
+  "end": 33,
+  "display": "fullscreen",
+  "animationIn": "fadeIn",
+  "animationOut": "fadeOut"
+}
+```
+
+### Image Item rules
+- `type`: `"image"` (REQUIRED)
+- `display`: `"fullscreen"` (covers canvas, avatar hidden) or `"pip"` (avatar shrinks to corner)
+- `src`: `"NEEDS_IMAGE"` for placeholders; replace with path relative to `public/`
+- `imagePrompt`: AI image generation prompt. **Must follow the Visual Style Guide.**
+- Visible 5-10 seconds each
+- **No title may overlap with an image's time range** (2s buffer)
+
+### Clip Item schema
+```json
+{
+  "type": "clip",
+  "id": "clip1",
+  "src": "NEEDS_CLIP",
+  "clipPrompt": "Contextual description of the ideal clip, in the same language as the transcript",
+  "caption": "Optional caption",
+  "start": 40,
+  "end": 48,
+  "display": "fullscreen",
+  "animationIn": "fadeIn",
+  "animationOut": "fadeOut"
+}
+```
+
+### Clip Item rules
+- `type`: `"clip"` (REQUIRED)
+- `display`: always `"fullscreen"` — clips cover the entire canvas, avatar is hidden
+- `src`: `"NEEDS_CLIP"` for placeholders; replace with .mp4 path relative to `public/`
+- `clipPrompt`: 2-3 sentences describing the ideal clip, in the same language as the transcript
+- Clips are always rendered **muted** — the avatar's audio continues playing
+- Visible 5-10 seconds each
+- **No title or other fullscreen item may overlap** (2s buffer)
+- Style: warm corporate aesthetic coherent with the project's visual identity
+
+---
+
+## Design Philosophy — Overlay Distribution
+
+| Element | Screen time | Notes |
+|---------|-------------|-------|
+| Avatar visible | ~30% | Speaker is on screen |
+| Images (fullscreen) | ~35% | Static visuals, infographics, data |
+| Clips (fullscreen) | ~35% | Motion video overlays |
+| Titles | During avatar time only | Text + icon overlays |
+
+The AI pipeline automatically distributes overlays to achieve this balance.
+
+---
+
+## Visual Style Guide for Image Prompts
+
+### Mandatory style suffix for every imagePrompt
+- Dark warm background (#1a1a2e to #2d1b00 gradient), amber/golden accents, soft warm glow
+- Premium corporate infographic, cinematic quality, NO white backgrounds, NO clip-art
+- Sans-serif typography, warm palette: amber (#F59E0B), gold (#D4A574), warm white (#FFF8F0), teal (#5EEAD4) accent
+
+### Text minimization
+- Viewer has 5-10 seconds — image must be understood at a glance
+- Prefer visual elements over text labels
+- When data is essential, show numbers LARGE with single-word labels
+
+### What to avoid
+- White/light backgrounds, flat clip-art, bright primary colors, dense diagrams
+
+### What works well
+- Dark warm infographics with amber/gold highlights
+- Iconographic representations, charts with warm gradients
+- Visual metaphors (glowing pyramid > text list)
 
 ---
 
@@ -177,45 +265,39 @@ FiDroplet, FiCloudRain, FiCloudSnow, FiCloudDrizzle, FiWind, FiUmbrella, FiTherm
 
 ## Important rules
 
-- **Relative paths only**: The `videoSrc` field in JSON should be just the filename (e.g., `"my-video.mp4"`), not an absolute path. The file must exist in `public/`.
+- **Relative paths**: `videoSrc` and item `src` fields use paths relative to `public/` (e.g., `"accclimatica/curso1/u1/avatar.mp4"`). Legacy plain filenames still work.
 - **Never hardcode absolute paths** in any configuration or JSON.
-- **Root.tsx auto-registration**: The `generate_layout.py` script auto-adds compositions to `Root.tsx`. If manually adding, follow the pattern in the existing file.
-- **Font**: The project uses Google Font "Roboto" loaded via `@remotion/google-fonts`.
-- **Canvas**: Standard is 1920x1080 at 30fps.
-- **Transcripts are cached**: Audio and transcripts are cached in `transcripts/`. Use `--force-transcribe` to regenerate.
+- **Root.tsx auto-registration**: The `generate_layout.py` script auto-adds compositions to `Root.tsx`.
+- **Font**: Google Font "Roboto" via `@remotion/google-fonts`.
+- **Canvas**: 1920x1080 at 30fps.
+- **Transcripts are cached**: Use `--force-transcribe` to regenerate.
 
 ---
 
 ## Troubleshooting
 
 ### "Cannot find module" error after generating
-The `generate_layout.py` script should auto-register in `Root.tsx`. If it didn't, manually add:
-1. An import for the JSON file
-2. A cast to `VideoLayout`
-3. A `<TypedComposition>` block
+Manually add to Root.tsx: import, cast to VideoLayout, TypedComposition block.
 
 ### ffmpeg not found
-Install with `winget install Gyan.FFmpeg` (Windows) or `brew install ffmpeg` (macOS).
+`winget install Gyan.FFmpeg` (Windows) or `brew install ffmpeg` (macOS).
 
 ### Groq API errors
 - Check `scripts/.env` has a valid `GROQ_API_KEY`
-- Audio files must be under 25 MB for Whisper
-- If SSL errors occur, the script uses `verify=False` on httpx as a workaround
+- Audio files must be under 25 MB
+- SSL errors: script uses `verify=False` on httpx
 
-### Video doesn't show in preview
-- Ensure the .mp4 is in `public/`, not in `src/`
-- Ensure `videoSrc` in the JSON matches the filename exactly (case-sensitive)
+### Video/clip doesn't show in preview
+- Ensure files are in `public/` (or subdirectory)
+- Ensure paths in JSON match exactly (case-sensitive, forward slashes)
 
 ### Rendering is slow
-- Use `--concurrency=4` or higher: `npx remotion render MyVideo out/v.mp4 --concurrency=4`
-- VP8/VP9 transparent renders are slower than MP4
+- `--concurrency=4`: `npx remotion render MyVideo out/v.mp4 --concurrency=4`
 
 ---
 
 ## Batch processing
-Process all videos in a folder at once:
 ```bash
 cd scripts
-python generate_layout.py --batch ../public/
+python generate_layout.py --batch ../public/accclimatica/curso1/
 ```
-This processes every .mp4 in the folder sequentially.

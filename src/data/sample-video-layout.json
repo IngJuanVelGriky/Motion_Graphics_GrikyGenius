@@ -4,7 +4,7 @@
     "width": 1920,
     "height": 1080,
     "fps": 30,
-    "durationInSeconds": 5
+    "durationInSeconds": 30
   },
   "layout": {
     "left": { "x": 80, "y": 140, "width": 480, "height": 800 },
@@ -13,10 +13,11 @@
   },
   "items": [
     {
-      "id": "t1",
-      "text": "Automatiza títulos",
+      "id": "h1",
+      "text": "Automatiza titulos",
+      "icon": "FiZap",
       "start": 0.4,
-      "end": 2.2,
+      "end": 4.2,
       "column": "left",
       "verticalAlign": "center",
       "variant": "headline",
@@ -24,10 +25,23 @@
       "animationOut": "fadeOut"
     },
     {
-      "id": "t2",
+      "type": "image",
+      "id": "img1",
+      "src": "NEEDS_IMAGE",
+      "caption": "Pipeline de motion graphics",
+      "imagePrompt": "A clean technical diagram showing a video production pipeline: video file flows to audio extraction, then transcription, then AI highlights, then JSON data, then final rendered video. Modern flat design with blue and purple accents on dark background.",
+      "start": 6.5,
+      "end": 13.0,
+      "display": "fullscreen",
+      "animationIn": "fadeIn",
+      "animationOut": "fadeOut"
+    },
+    {
+      "id": "h2",
       "text": "Sin tocar After Effects",
-      "start": 2.4,
-      "end": 4.6,
+      "icon": "FiCode",
+      "start": 15.5,
+      "end": 19.5,
       "column": "right",
       "verticalAlign": "center",
       "variant": "headline",
@@ -35,25 +49,14 @@
       "animationOut": "fadeOut"
     },
     {
-      "id": "t3",
-      "text": "Generado con JSON",
-      "start": 1.0,
-      "end": 2.0,
-      "column": "left",
-      "verticalAlign": "bottom",
-      "variant": "subheadline",
-      "animationIn": "slideRightFade",
-      "animationOut": "fadeOut"
-    },
-    {
-      "id": "t4",
-      "text": "100% escalable",
-      "start": 3.0,
-      "end": 4.6,
-      "column": "right",
-      "verticalAlign": "bottom",
-      "variant": "subheadline",
-      "animationIn": "slideLeftFade",
+      "type": "image",
+      "id": "img2",
+      "src": "NEEDS_IMAGE",
+      "imagePrompt": "A screenshot-style mockup of a code editor showing JSON configuration data on the left panel, and a video preview with animated title overlays on the right panel. Clean dark theme UI.",
+      "start": 22.0,
+      "end": 28.0,
+      "display": "pip",
+      "animationIn": "fadeIn",
       "animationOut": "fadeOut"
     }
   ]

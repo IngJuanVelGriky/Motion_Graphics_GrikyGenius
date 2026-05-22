@@ -7,6 +7,7 @@ export type VerticalAlign = "top" | "center" | "bottom";
 export type Variant = "headline" | "subheadline";
 export type AnimationIn = "slideRightFade" | "slideLeftFade" | "fadeIn";
 export type AnimationOut = "fadeOut";
+export type ImageDisplay = "fullscreen" | "pip";
 
 export interface ColumnBox {
   x: number;
@@ -22,6 +23,7 @@ export interface LayoutConfig {
 }
 
 export interface TitleItem {
+  type?: "title";
   id: string;
   text: string;
   icon?: string;
@@ -35,6 +37,34 @@ export interface TitleItem {
   fontSize?: number;
 }
 
+export interface ImageItem {
+  type: "image";
+  id: string;
+  src: string;
+  caption?: string;
+  imagePrompt?: string;
+  start: number;
+  end: number;
+  display: ImageDisplay;
+  animationIn: AnimationIn;
+  animationOut: AnimationOut;
+}
+
+export interface ClipItem {
+  type: "clip";
+  id: string;
+  src: string;
+  clipPrompt?: string;
+  caption?: string;
+  start: number;
+  end: number;
+  display: "fullscreen";
+  animationIn: AnimationIn;
+  animationOut: AnimationOut;
+}
+
+export type LayoutItem = TitleItem | ImageItem | ClipItem;
+
 export interface CanvasConfig {
   width: number;
   height: number;
@@ -46,7 +76,64 @@ export interface VideoLayout {
   videoSrc: string;
   canvas: CanvasConfig;
   layout: LayoutConfig;
-  items: TitleItem[];
+  items: LayoutItem[];
+}
+
+// ─── Type guards ─────────────────────────────────────────────────────────────
+
+export function isImageItem(item: LayoutItem): item is ImageItem {
+  return item.type === "image";
+}
+
+export function isClipItem(item: LayoutItem): item is ClipItem {
+  return item.type === "clip";
+}
+
+export function isTitleItem(item: LayoutItem): item is TitleItem {
+  return item.type === "title" || item.type === undefined;
+}
+
+/** Returns true for any fullscreen overlay (fullscreen images or clips). */
+export function isFullscreenOverlay(item: LayoutItem): item is ImageItem | ClipItem {
+  if (isClipItem(item)) return true;
+  if (isImageItem(item) && item.display === "fullscreen") return true;
+  return false;
+}
+
+// ─── Overlap validation ──────────────────────────────────────────────────────
+
+const OVERLAP_BUFFER = 2; // seconds
+
+export function validateNoOverlap(items: LayoutItem[]): string[] {
+  const errors: string[] = [];
+  const fullscreenOverlays = items.filter(isFullscreenOverlay);
+  const titles = items.filter(isTitleItem);
+
+  // Titles cannot overlap with any fullscreen overlay
+  for (const overlay of fullscreenOverlays) {
+    for (const title of titles) {
+      if (title.start < overlay.end + OVERLAP_BUFFER && title.end > overlay.start - OVERLAP_BUFFER) {
+        errors.push(
+          `Overlap: ${overlay.type} "${overlay.id}" [${overlay.start}-${overlay.end}s] conflicts with title "${title.id}" [${title.start}-${title.end}s]`
+        );
+      }
+    }
+  }
+
+  // Fullscreen overlays cannot overlap with each other
+  for (let i = 0; i < fullscreenOverlays.length; i++) {
+    for (let j = i + 1; j < fullscreenOverlays.length; j++) {
+      const a = fullscreenOverlays[i];
+      const b = fullscreenOverlays[j];
+      if (a.start < b.end + OVERLAP_BUFFER && a.end > b.start - OVERLAP_BUFFER) {
+        errors.push(
+          `Overlap: ${a.type} "${a.id}" [${a.start}-${a.end}s] conflicts with ${b.type} "${b.id}" [${b.start}-${b.end}s]`
+        );
+      }
+    }
+  }
+
+  return errors;
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
